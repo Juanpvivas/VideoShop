@@ -14,7 +14,7 @@ data class Movie(
     @PrimaryKey
     @NonNull
     var id: String,
-    var name: String? = null,
+    var title: String? = null,
     var overview: String? = null,
     var poster_path: String? = null,
     @SerializedName("release_date") var date: String? = null

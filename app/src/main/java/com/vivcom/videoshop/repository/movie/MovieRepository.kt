@@ -1,4 +1,4 @@
-package com.vivcom.videoshop.repository
+package com.vivcom.videoshop.repository.movie
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -13,8 +13,9 @@ class MovieRepository(private val application: Application) {
     private var mAllMovies: LiveData<List<Movie>> = mRepository.getAllMovies()
 
     fun getMovies(): LiveData<List<Movie>> {
-        if (mAllMovies.value == null || mAllMovies.value?.size == 0) {
-            MovieRepositoryNet.getMovies(application, object : BaseResponse<ListMovies>() {
+        MovieRepositoryNet.getMovies(
+            application,
+            object : BaseResponse<ListMovies>() {
                 override fun okResult(resultType: ListMovies?) {
                     mRepository.insertListMovie(resultType?.items!!)
                 }
@@ -24,7 +25,6 @@ class MovieRepository(private val application: Application) {
                 }
 
             })
-        }
         return mAllMovies
     }
 

@@ -1,11 +1,10 @@
-package com.vivcom.videoshop.repository
+package com.vivcom.videoshop.repository.movie
 
 import android.content.Context
 import com.vivcom.videoshop.repository.connection.Proxy
 import com.vivcom.videoshop.repository.model.ListMovies
 import com.vivcom.videoshop.repository.model.MessageResponse
 import com.vivcom.videoshop.repository.persistence.database.BaseResponse
-import com.vivcom.videoshop.repository.persistence.database.entity.Movie
 import com.vivcom.videoshop.repository.tool.Constants
 
 class MovieRepositoryNet {

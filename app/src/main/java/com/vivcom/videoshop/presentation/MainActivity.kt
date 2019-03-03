@@ -7,11 +7,14 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.vivcom.videoshop.R
+import com.vivcom.videoshop.presentation.video.VideoListAdapter
 import com.vivcom.videoshop.presentation.video.VideoViewModel
 import com.vivcom.videoshop.repository.persistence.database.entity.Movie
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,16 +25,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        val adapter = VideoListAdapter(this)
+        rv_content.adapter = adapter
+        rv_content.layoutManager =  LinearLayoutManager(this)
+
         mVideoViewModel = ViewModelProviders.of(this).get(VideoViewModel::class.java)
         mVideoViewModel.getAllMovies().observe(this, Observer<List<Movie>> { movies ->
-            print(movies.size.toString())
-            //adapter.setWords(words)
+            adapter.setMovies(movies)
         })
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
