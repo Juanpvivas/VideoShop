@@ -13,7 +13,7 @@ import com.vivcom.videoshop.repository.tool.Constants.Url.BASE_IMAGE_URL
 data class Movie(
     @PrimaryKey
     @NonNull
-    var id: Double,
+    var id: String,
     var name: String? = null,
     var overview: String? = null,
     var poster_path: String? = null,

@@ -12,7 +12,7 @@ fun LinkedTreeMap<*, *>.toJsonString(): String {
 
         jsonString += "\"" + i.key + "\" : "
         if (i.value is String) {
-            jsonString += "\"" + i.value + "\""
+            jsonString += "\"" + (i.value as String).replace("\"", "'") + "\""
         } else if (i.value is LinkedTreeMap<*, *>) {
             jsonString += (i.value as LinkedTreeMap<*, *>).toJsonString()
         } else if (i.value is ArrayList<*>) {
