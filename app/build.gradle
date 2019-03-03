@@ -50,6 +50,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit2"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2"
 
+    //glide
+    implementation "com.github.bumptech.glide:glide:$glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'

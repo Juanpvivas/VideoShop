@@ -35,7 +35,7 @@ class Proxy<T : BaseModel> {
                 return
             }
 
-            val proxyEndpoint: IProxyEndPoints = ProxyAdapter.startConnection(Constants.Url.URL_BASE)
+            val proxyEndpoint: IProxyEndPoints = ProxyAdapter.startConnection(Constants.Url.BASE_URL)
             val requestQueries: Map<String, String> = queries ?: HashMap()
             val requestHeaders: HashMap<String, String> = headers ?: HashMap()
 
@@ -125,14 +125,14 @@ class Proxy<T : BaseModel> {
 
                 override fun onFailure(call: Call<Any>?, t: Throwable?) {
                     try {
-                        val newMessageRespones: MessageResponse =
+                        val newMessageResponse: MessageResponse =
                             BaseModel.objectFromJson(t.toString(), MessageResponse::class.java) as MessageResponse
-                        newMessageRespones.code = t?.hashCode()
-                        failedAnswer?.invoke(newMessageRespones)
+                        newMessageResponse.code = t?.hashCode()
+                        failedAnswer.invoke(newMessageResponse)
 
                     } catch (e: Exception) {
                         val messageResponse = MessageResponse(t?.hashCode()!!, t.toString())
-                        failedAnswer?.invoke(messageResponse)
+                        failedAnswer.invoke(messageResponse)
                     }
                 }
             })

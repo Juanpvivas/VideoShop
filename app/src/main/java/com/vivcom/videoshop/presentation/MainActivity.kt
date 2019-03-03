@@ -1,19 +1,32 @@
-package com.vivcom.videoshop
+package com.vivcom.videoshop.presentation
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.vivcom.videoshop.R
+import com.vivcom.videoshop.presentation.video.VideoViewModel
+import com.vivcom.videoshop.repository.persistence.database.entity.Movie
 
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var mVideoViewModel: VideoViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        mVideoViewModel = ViewModelProviders.of(this).get(VideoViewModel::class.java)
+        mVideoViewModel.getAllMovies().observe(this, Observer<List<Movie>> { movies ->
+            print(movies.size.toString())
+            //adapter.setWords(words)
+        })
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
