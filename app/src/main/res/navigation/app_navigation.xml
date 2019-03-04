@@ -12,13 +12,21 @@
             tools:layout="@layout/content_main">
 
 
-        <action
-                android:id="@+id/next_action"
-                app:destination="@+id/video_detail_fragment"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right"/>
+        <!--<action-->
+                <!--android:id="@+id/next_action"-->
+                <!--app:destination="@+id/video_detail_fragment"-->
+                <!--app:enterAnim="@anim/slide_in_right"-->
+                <!--app:exitAnim="@anim/slide_out_left"-->
+                <!--app:popEnterAnim="@anim/slide_in_left"-->
+                <!--app:popExitAnim="@anim/slide_out_right"/>-->
+
+        <!--<action-->
+                <!--android:id="@+id/shopping_cart_action"-->
+                <!--app:destination="@+id/shopping_cart"-->
+                <!--app:enterAnim="@anim/slide_in_right"-->
+                <!--app:exitAnim="@anim/slide_out_left"-->
+                <!--app:popEnterAnim="@anim/slide_in_left"-->
+                <!--app:popExitAnim="@anim/slide_out_right"/>-->
 
 
     </fragment>
@@ -29,15 +37,13 @@
             android:label="@string/video_detail"
             tools:layout="@layout/activity_video_detail">
 
+    </fragment>
 
-        <!--<action-->
-                <!--android:id="@+id/next_action"-->
-                <!--app:destination="@+id/flow_step_one_dest"-->
-                <!--app:enterAnim="@anim/slide_in_right"-->
-                <!--app:exitAnim="@anim/slide_out_left"-->
-                <!--app:popEnterAnim="@anim/slide_in_left"-->
-                <!--app:popExitAnim="@anim/slide_out_right"/>-->
-
+    <fragment
+            android:id="@+id/shopping_cart"
+            android:name="com.vivcom.videoshop.presentation.shopping_cart.ShoppingCartFragment"
+            android:label="@string/shopping_cart"
+            tools:layout="@layout/fragment_shopping_cart">
 
     </fragment>
 

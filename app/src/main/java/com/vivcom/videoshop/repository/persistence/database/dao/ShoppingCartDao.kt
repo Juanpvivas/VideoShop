@@ -5,7 +5,6 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.vivcom.videoshop.repository.persistence.database.entity.ShoppingCart
 
-
 @Dao
 abstract class ShoppingCartDao : BaseDao<ShoppingCart> {
     @Query("DELETE FROM shopping_cart")

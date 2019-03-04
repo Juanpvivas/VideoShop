@@ -3,6 +3,7 @@ package com.vivcom.videoshop.repository.persistence.database.entity
 import android.widget.ImageView
 import androidx.annotation.NonNull
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.bumptech.glide.Glide
 import com.google.gson.annotations.SerializedName

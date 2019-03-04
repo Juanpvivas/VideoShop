@@ -4,12 +4,15 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(
+@Entity
+    (
     tableName = "shopping_cart",
     foreignKeys = [
-        ForeignKey(entity = Movie::class,
+        ForeignKey(
+            entity = Movie::class,
             parentColumns = ["id"],
-            childColumns = ["videoId"])]
+            childColumns = ["videoId"]
+        )]
 )
 data class ShoppingCart(
     @PrimaryKey
