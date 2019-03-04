@@ -17,11 +17,15 @@ class ShoppingCartRepository(private val application: Application) {
         return mAllShoppingCart
     }
 
-    fun insertMovie(shoppingCart: ShoppingCart) = GlobalScope.launch {
+    fun insertShopping(shoppingCart: ShoppingCart) = GlobalScope.launch {
         mShoppingCartDao.insert(shoppingCart)
     }
 
-    fun insertListMovie(movies: List<ShoppingCart>) = GlobalScope.launch {
+    fun insertListShopping(movies: List<ShoppingCart>) = GlobalScope.launch {
         mShoppingCartDao.insert(movies)
+    }
+
+    fun deleteShoppingCart(id: String) = GlobalScope.launch {
+        mShoppingCartDao.deleteShoppingCart(id)
     }
 }

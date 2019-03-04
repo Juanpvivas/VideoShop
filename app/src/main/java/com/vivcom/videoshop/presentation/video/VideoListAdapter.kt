@@ -1,17 +1,25 @@
 package com.vivcom.videoshop.presentation.video
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.vivcom.videoshop.R
 import com.vivcom.videoshop.repository.persistence.database.entity.Movie
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 
-class VideoListAdapter(val context: Context) : RecyclerView.Adapter<VideoListAdapter.MovieViewHolder>() {
+class VideoListAdapter(
+    val context: Context,
+    val addShoppingCart: (Movie) -> Unit,
+    val deleteShoppingCart: (Movie) -> Unit,
+    val detailMovie: (Movie) -> Unit
+) : RecyclerView.Adapter<VideoListAdapter.MovieViewHolder>() {
 
     private var mInflater: LayoutInflater = LayoutInflater.from(context)
     private var mMovies: List<Movie> = emptyList()
@@ -30,6 +38,14 @@ class VideoListAdapter(val context: Context) : RecyclerView.Adapter<VideoListAda
         holder.mTitle.text = current.title
         holder.mDescription.text = current.overview
         current.loadImage(holder.mThumbnail, current.poster_path!!)
+        holder.itemView.onClick {
+            val bundle = Bundle()
+            bundle.putSerializable("movie", current)
+            Navigation.createNavigateOnClickListener(R.id.detail, bundle)
+            //detailMovie(current)
+        }
+        holder.mAdd.onClick { addShoppingCart(current) }
+        holder.mDelete.onClick { deleteShoppingCart(current) }
     }
 
     fun setMovies(movies: List<Movie>) {
@@ -41,5 +57,7 @@ class VideoListAdapter(val context: Context) : RecyclerView.Adapter<VideoListAda
         var mTitle = itemView.findViewById<TextView>(R.id.tv_title)!!
         var mDescription = itemView.findViewById<TextView>(R.id.tv_overview)!!
         var mThumbnail = itemView.findViewById<ImageView>(R.id.thumbnail)!!
+        var mAdd = itemView.findViewById<ImageView>(R.id.iv_add)
+        var mDelete = itemView.findViewById<ImageView>(R.id.iv_delete)
     }
 }
