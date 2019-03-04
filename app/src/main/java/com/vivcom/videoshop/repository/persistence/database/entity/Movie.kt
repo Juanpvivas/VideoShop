@@ -21,8 +21,9 @@ data class Movie(
 ) : BaseModel() {
 
     fun loadImage(view: ImageView, poster_path: String) {
+        val url = (BASE_IMAGE_URL + poster_path).trim()
         Glide.with(view.context)
-            .load(BASE_IMAGE_URL + poster_path)
+            .load(url)
             .into(view)
     }
 }

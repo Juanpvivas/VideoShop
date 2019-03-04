@@ -6,7 +6,7 @@ object Constants {
 
     object Url {
         const val BASE_URL: String = "https://api.themoviedb.org/"
-        const val BASE_IMAGE_URL: String = " https://image.tmdb.org/t/p/w45"
+        const val BASE_IMAGE_URL: String = "https://image.tmdb.org/t/p/w300"
 
         object Movie {
             const val GET_LIST: String = "3/list/1"

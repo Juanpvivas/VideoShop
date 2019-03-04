@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.vivcom.videoshop.R
 import com.vivcom.videoshop.repository.persistence.database.entity.Movie
@@ -39,10 +38,11 @@ class VideoListAdapter(
         holder.mDescription.text = current.overview
         current.loadImage(holder.mThumbnail, current.poster_path!!)
         holder.itemView.onClick {
-            val bundle = Bundle()
-            bundle.putSerializable("movie", current)
-            Navigation.createNavigateOnClickListener(R.id.detail, bundle)
-            //detailMovie(current)
+            //val bundle = Bundle()
+            //bundle.putSerializable("movie", current)
+            //Navigation.createNavigateOnClickListener(R.id.video_detail_fragment, bundle)
+            //findNavController(holder.itemView).navigate(R.id.video_detail_fragment)
+            detailMovie(current)
         }
         holder.mAdd.onClick { addShoppingCart(current) }
         holder.mDelete.onClick { deleteShoppingCart(current) }

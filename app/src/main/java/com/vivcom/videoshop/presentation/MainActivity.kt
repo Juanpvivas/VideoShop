@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vivcom.videoshop.R
@@ -21,45 +22,19 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mVideoViewModel: VideoViewModel
-
-    private fun detailMovie(movie: Movie) {
-        val bundle = Bundle()
-        bundle.putSerializable("movie", movie)
-        Navigation.createNavigateOnClickListener(R.id.detail, bundle)
-    }
-
-    private fun addShoppingCart(movie: Movie) {
-        mVideoViewModel.addShoppingCart(movie)
-        Toast.makeText(
-            applicationContext,
-            R.string.add_shopping_cart,
-            Toast.LENGTH_LONG
-        ).show()
-    }
-
-    private fun deleteShoppingCart(movie: Movie) {
-        mVideoViewModel.deleteShoppingCart(movie)
-        Toast.makeText(
-            applicationContext,
-            R.string.delete_shopping_cart,
-            Toast.LENGTH_LONG
-        ).show()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val adapter = VideoListAdapter(this, ::addShoppingCart, ::deleteShoppingCart, ::detailMovie)
-        rv_content.adapter = adapter
-        rv_content.layoutManager = LinearLayoutManager(this)
 
-        mVideoViewModel = ViewModelProviders.of(this).get(VideoViewModel::class.java)
-        mVideoViewModel.getAllMovies().observe(this, Observer<List<Movie>> { movies ->
-            adapter.setMovies(movies)
-        })
+        val host: NavHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
+
+        // Set up Action Bar
+        val navController = host.navController
+
+
 
     }
 
