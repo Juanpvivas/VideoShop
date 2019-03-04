@@ -12,4 +12,7 @@ abstract class MovieDao : BaseDao<Movie> {
 
     @Query("SELECT * from Movie ORDER BY id ASC")
     abstract fun getAllMovies(): LiveData<List<Movie>>
+
+    @Query("SELECT * from Movie WHERE id = :idMovie")
+    abstract fun getMovieById(idMovie: String): LiveData<Movie>
 }

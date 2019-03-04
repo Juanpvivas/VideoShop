@@ -27,4 +27,8 @@ class VideoViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteShoppingCart(movie: Movie) {
         mShoppingCartRepository.deleteShoppingCart(movie.id)
     }
+
+    fun getMovieById(idMovie: String): LiveData<Movie> {
+        return mMovieRepository.getMovieById(idMovie)
+    }
 }

@@ -31,4 +31,9 @@ object Constants {
         const val UNAUTHORIZED: Int = 401
     }
 
+    object Keys {
+        const val ID_MOVIE = "IdMovie"
+    }
+
+
 }

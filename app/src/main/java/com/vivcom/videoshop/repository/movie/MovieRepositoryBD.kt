@@ -12,6 +12,10 @@ class MovieRepositoryBD(application: Application) {
     private var mMovieDao: MovieDao = DatabaseConfig.getInstance(application).movieDao()
     private var mAllMovies: LiveData<List<Movie>> = mMovieDao.getAllMovies()
 
+    fun getMovieById(idMovie: String): LiveData<Movie> {
+        return mMovieDao.getMovieById(idMovie)
+    }
+
     fun getAllMovies(): LiveData<List<Movie>> {
         return mAllMovies
     }

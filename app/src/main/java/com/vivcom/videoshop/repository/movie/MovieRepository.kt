@@ -31,4 +31,8 @@ class MovieRepository(private val application: Application) {
     fun insertMovie(movie: Movie) {
         mRepository.insertMovie(movie)
     }
+
+    fun getMovieById(idMovie: String): LiveData<Movie> {
+        return mRepository.getMovieById(idMovie)
+    }
 }

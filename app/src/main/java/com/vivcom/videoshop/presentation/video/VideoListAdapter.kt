@@ -1,7 +1,6 @@
 package com.vivcom.videoshop.presentation.video
 
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,7 @@ class VideoListAdapter(
     val context: Context,
     val addShoppingCart: (Movie) -> Unit,
     val deleteShoppingCart: (Movie) -> Unit,
-    val detailMovie: (Movie) -> Unit
+    val detailMovie: (String) -> Unit
 ) : RecyclerView.Adapter<VideoListAdapter.MovieViewHolder>() {
 
     private var mInflater: LayoutInflater = LayoutInflater.from(context)
@@ -38,11 +37,7 @@ class VideoListAdapter(
         holder.mDescription.text = current.overview
         current.loadImage(holder.mThumbnail, current.poster_path!!)
         holder.itemView.onClick {
-            //val bundle = Bundle()
-            //bundle.putSerializable("movie", current)
-            //Navigation.createNavigateOnClickListener(R.id.video_detail_fragment, bundle)
-            //findNavController(holder.itemView).navigate(R.id.video_detail_fragment)
-            detailMovie(current)
+            detailMovie(current.id)
         }
         holder.mAdd.onClick { addShoppingCart(current) }
         holder.mDelete.onClick { deleteShoppingCart(current) }

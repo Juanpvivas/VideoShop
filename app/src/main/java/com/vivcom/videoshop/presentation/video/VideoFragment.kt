@@ -13,13 +13,12 @@ import androidx.navigation.fragment.findNavController
 
 import com.vivcom.videoshop.R
 import com.vivcom.videoshop.repository.persistence.database.entity.Movie
+import com.vivcom.videoshop.repository.tool.Constants
 import kotlinx.android.synthetic.main.content_main.*
 
 class VideoFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var mVideoViewModel: VideoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,13 +27,10 @@ class VideoFragment : Fragment() {
         return inflater.inflate(R.layout.content_main, container, false)
     }
 
-    private lateinit var mVideoViewModel: VideoViewModel
-
-    private fun detailMovie(movie: Movie) {
+    private fun detailMovie(idMovie: String) {
         val bundle = Bundle()
-        bundle.putSerializable("movie", movie)
-        findNavController().navigate(R.id.video_detail_fragment)
-        //Navigation.createNavigateOnClickListener(R.id.detail, bundle)
+        bundle.putString(Constants.Keys.ID_MOVIE, idMovie)
+        findNavController().navigate(R.id.video_detail_fragment, bundle)
     }
 
     private fun addShoppingCart(movie: Movie) {
