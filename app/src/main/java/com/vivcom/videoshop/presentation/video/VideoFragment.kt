@@ -17,19 +17,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vivcom.videoshop.R
 import com.vivcom.videoshop.repository.persistence.database.entity.Movie
 import com.vivcom.videoshop.repository.tool.Constants
+import com.vivcom.videoshop.repository.tool.Constants.options
 import kotlinx.android.synthetic.main.content_main.*
 
 class VideoFragment : Fragment() {
 
     private lateinit var mVideoViewModel: VideoViewModel
-    private val options = navOptions {
-        anim {
-            enter = R.anim.slide_in_right
-            exit = R.anim.slide_out_left
-            popEnter = R.anim.slide_in_left
-            popExit = R.anim.slide_out_right
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +35,6 @@ class VideoFragment : Fragment() {
     private fun detailMovie(idMovie: String) {
         val bundle = Bundle()
         bundle.putString(Constants.Keys.ID_MOVIE, idMovie)
-
         findNavController().navigate(R.id.video_detail_fragment, bundle, options)
     }
 

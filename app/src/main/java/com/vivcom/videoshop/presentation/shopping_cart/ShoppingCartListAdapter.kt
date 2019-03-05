@@ -33,7 +33,6 @@ class ShoppingCartListAdapter(
         holder.mTitle.text = current.title
         holder.mDescription.visibility = View.GONE
         holder.mThumbnail.visibility = View.GONE
-        holder.itemView.visibility = View.GONE
         holder.mAdd.visibility = View.GONE
         holder.mDelete.visibility = View.GONE
     }

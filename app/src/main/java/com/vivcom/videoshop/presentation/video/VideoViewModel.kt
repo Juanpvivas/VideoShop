@@ -3,7 +3,6 @@ package com.vivcom.videoshop.presentation.video
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import com.vivcom.videoshop.repository.movie.MovieRepository
 import com.vivcom.videoshop.repository.persistence.database.entity.Movie
 import com.vivcom.videoshop.repository.persistence.database.entity.ShoppingCart
@@ -34,13 +33,15 @@ class VideoViewModel(application: Application) : AndroidViewModel(application) {
         return mMovieRepository.getMovieById(idMovie)
     }
 
-    fun getAllShoppingCart(): List<LiveData<Movie>> {
-        val listMovie = emptyList<LiveData<Movie>>().toMutableList()
+    fun getAllShoppingCart(updateListShoppingCart: (List<Movie>) -> Unit) {
+        val listMovie = emptyList<Movie>().toMutableList()
         mAllShoppingCart.observeForever { list ->
             list.forEach {
-                listMovie.add(getMovieById(it.videoId))
+                getMovieById(it.videoId).observeForever { movie ->
+                    listMovie.add(movie)
+                    updateListShoppingCart(listMovie)
+                }
             }
         }
-        return listMovie
     }
 }

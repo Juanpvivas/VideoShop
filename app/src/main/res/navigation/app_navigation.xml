@@ -11,22 +11,21 @@
             android:label="@string/home"
             tools:layout="@layout/content_main">
 
+        <action
+                android:id="@+id/next_action"
+                app:destination="@+id/video_detail_fragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
 
-        <!--<action-->
-                <!--android:id="@+id/next_action"-->
-                <!--app:destination="@+id/video_detail_fragment"-->
-                <!--app:enterAnim="@anim/slide_in_right"-->
-                <!--app:exitAnim="@anim/slide_out_left"-->
-                <!--app:popEnterAnim="@anim/slide_in_left"-->
-                <!--app:popExitAnim="@anim/slide_out_right"/>-->
-
-        <!--<action-->
-                <!--android:id="@+id/shopping_cart_action"-->
-                <!--app:destination="@+id/shopping_cart"-->
-                <!--app:enterAnim="@anim/slide_in_right"-->
-                <!--app:exitAnim="@anim/slide_out_left"-->
-                <!--app:popEnterAnim="@anim/slide_in_left"-->
-                <!--app:popExitAnim="@anim/slide_out_right"/>-->
+        <action
+                android:id="@+id/shopping_cart_action"
+                app:destination="@+id/shopping_cart"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
 
 
     </fragment>
@@ -36,6 +35,10 @@
             android:name="com.vivcom.videoshop.presentation.video_detail.VideoDetailFragment"
             android:label="@string/video_detail"
             tools:layout="@layout/activity_video_detail">
+        <argument
+                android:name="idMovie"
+                app:argType="string"
+                android:defaultValue="NA"/>
 
     </fragment>
 

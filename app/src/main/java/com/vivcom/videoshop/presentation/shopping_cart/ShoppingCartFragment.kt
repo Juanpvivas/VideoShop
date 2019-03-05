@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.vivcom.videoshop.R
 import com.vivcom.videoshop.presentation.video.VideoViewModel
 import com.vivcom.videoshop.repository.persistence.database.entity.Movie
@@ -23,8 +21,12 @@ class ShoppingCartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_shopping_cart, container, false)
+    }
+
+    private fun updateListShoppingCart(list: List<Movie>) {
+        if (rv_content != null)
+            (rv_content.adapter as ShoppingCartListAdapter).setMovies(list)
     }
 
     override fun onResume() {
@@ -35,9 +37,7 @@ class ShoppingCartFragment : Fragment() {
         rv_content.layoutManager = LinearLayoutManager(context!!.applicationContext)
 
         mVideoViewModel = ViewModelProviders.of(this).get(VideoViewModel::class.java)
-        mVideoViewModel.getAllMovies().observe(this, Observer<List<Movie>> { movies ->
-            adapter.setMovies(movies)
-        })
-        mVideoViewModel.getAllShoppingCart()
+        mVideoViewModel.getAllShoppingCart(::updateListShoppingCart)
     }
+
 }
