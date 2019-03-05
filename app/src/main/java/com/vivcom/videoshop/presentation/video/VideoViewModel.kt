@@ -29,19 +29,25 @@ class VideoViewModel(application: Application) : AndroidViewModel(application) {
         mShoppingCartRepository.deleteShoppingCart(movie.id)
     }
 
+    fun deleteAllShoppingCart() {
+        mShoppingCartRepository.deleteAll()
+    }
+
     fun getMovieById(idMovie: String): LiveData<Movie> {
         return mMovieRepository.getMovieById(idMovie)
     }
 
     fun getAllShoppingCart(updateListShoppingCart: (List<Movie>) -> Unit) {
-        val listMovie = emptyList<Movie>().toMutableList()
         mAllShoppingCart.observeForever { list ->
+            val listMovie = emptyList<Movie>().toMutableList()
             list.forEach {
                 getMovieById(it.videoId).observeForever { movie ->
                     listMovie.add(movie)
                     updateListShoppingCart(listMovie)
                 }
             }
+            if (list.isEmpty())
+                updateListShoppingCart(emptyList())
         }
     }
 }

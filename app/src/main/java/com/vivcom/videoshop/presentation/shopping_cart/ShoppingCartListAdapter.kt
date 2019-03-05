@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vivcom.videoshop.R
 import com.vivcom.videoshop.repository.persistence.database.entity.Movie
-import org.jetbrains.anko.sdk27.coroutines.onClick
 
 
 class ShoppingCartListAdapter(

@@ -29,7 +29,7 @@ class ShoppingCartRepository(private val application: Application) {
         mShoppingCartDao.deleteShoppingCart(id)
     }
 
-    fun deleteAll(){
+    fun deleteAll() = GlobalScope.launch {
         mShoppingCartDao.deleteAll()
     }
 }

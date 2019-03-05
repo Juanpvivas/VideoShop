@@ -12,6 +12,7 @@ import com.vivcom.videoshop.R
 import com.vivcom.videoshop.presentation.video.VideoViewModel
 import com.vivcom.videoshop.repository.persistence.database.entity.Movie
 import kotlinx.android.synthetic.main.fragment_shopping_cart.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class ShoppingCartFragment : Fragment() {
 
@@ -38,6 +39,10 @@ class ShoppingCartFragment : Fragment() {
 
         mVideoViewModel = ViewModelProviders.of(this).get(VideoViewModel::class.java)
         mVideoViewModel.getAllShoppingCart(::updateListShoppingCart)
+
+        iv_delete_all.onClick {
+            mVideoViewModel.deleteAllShoppingCart()
+        }
     }
 
 }
