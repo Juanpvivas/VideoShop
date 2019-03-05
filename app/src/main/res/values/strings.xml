@@ -8,7 +8,7 @@
     <string name="video_detail">detalle video</string>
     <string name="shopping_cart">Carrito de compras</string>
 
-    <string name="deep_link_instructions">Digite los argumentos del deep link</string>
-    <string name="send_deep_link_notification_button">Enviar link notification</string>
+    <string name="deep_link_instructions">Digite el id de la pelicula, Ej: 1095</string>
+    <string name="send_deep_link_notification_button">Realizar consulta</string>
 
 </resources>

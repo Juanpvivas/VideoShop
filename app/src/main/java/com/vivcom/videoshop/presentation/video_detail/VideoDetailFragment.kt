@@ -58,14 +58,4 @@ class VideoDetailFragment : Fragment() {
             }
         })
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.shopping_cart -> {
-                findNavController().navigate(R.id.shopping_cart, null, options)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }

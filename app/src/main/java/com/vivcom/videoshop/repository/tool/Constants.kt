@@ -35,6 +35,7 @@ object Constants {
 
     object Keys {
         const val ID_MOVIE = "idMovie"
+        const val ARGS = "args"
     }
 
     val options = navOptions {

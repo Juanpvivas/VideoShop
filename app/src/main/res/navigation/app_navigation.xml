@@ -19,14 +19,6 @@
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"/>
 
-        <action
-                android:id="@+id/shopping_cart_action"
-                app:destination="@+id/shopping_cart"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right"/>
-
 
     </fragment>
 
@@ -35,6 +27,7 @@
             android:name="com.vivcom.videoshop.presentation.video_detail.VideoDetailFragment"
             android:label="@string/video_detail"
             tools:layout="@layout/activity_video_detail">
+
         <argument
                 android:name="idMovie"
                 app:argType="string"
@@ -48,22 +41,26 @@
             android:label="@string/shopping_cart"
             tools:layout="@layout/fragment_shopping_cart">
 
+        <action
+                android:id="@+id/shopping_cart_action"
+                app:destination="@+id/video_detail_fragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+
     </fragment>
 
     <fragment
-            android:id="@+id/deeplink_dest">
-        <!--android:name="com.example.android.codelabs.navigation.DeepLinkFragment"-->
-        <!--android:label="@string/deeplink"-->
-        <!--tools:layout="@layout/deeplink_fragment">-->
+            android:id="@+id/deeplink_dest"
+            android:name="com.vivcom.videoshop.presentation.deep_link.DeepLinkFragment"
+            android:label="@string/deeplink"
+            tools:layout="@layout/deeplink_fragment">
 
         <argument
-                android:name="myarg"
+                android:name="args"
                 android:defaultValue="Android!"/>
-        <!-- TODO STEP 12.1 - Add a deep link to www.example.com/{myarg}/ -->
-
-        <!--<deepLink app:uri="www.example.com/{myarg}" />-->
-
-        <!-- TODO END STEP 12.1 -->
+        <deepLink app:uri="www.themoviedb.org/search?query={args}"/>
     </fragment>
 
 </navigation>
