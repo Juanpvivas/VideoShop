@@ -12,7 +12,7 @@ import com.vivcom.videoshop.repository.persistence.database.entity.Movie
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 
-class VideoListAdapter(
+class VideoListAdapter (
     val context: Context,
     val addShoppingCart: (Movie) -> Unit,
     val deleteShoppingCart: (Movie) -> Unit,
